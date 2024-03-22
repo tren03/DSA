@@ -1,2 +1,2 @@
 # DSA
-questions in DSA
+some questions for dsa

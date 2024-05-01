@@ -10,32 +10,26 @@
  * };
  */
 
-
-//LOGIC = max diameter for a node would be height of left sub-tree + height of right sub-tree
-// so we recursively travel every node and caluclate height of left and right subtree and keep a variable to hold the maximum value
+//LOGIC : traverse every node recursively and check if abs(left - right) sub tree height > 1, if yes make flag false and return flag in the first function 
 class Solution {
 public:
-    int res=0;
-    int diameterOfBinaryTree(TreeNode* root) {
+    bool flag = true;
+    bool isBalanced(TreeNode* root) {
         if(!root)
         {
-            return 0;
+            return true;
         }
         dfs(root);
-        return res;
-
-
-
-
+        return flag;
+        
     }
-    int max_depth(TreeNode*r)
+    int depth(TreeNode *r)
     {
         if(!r)
         {
             return 0;
         }
-        return 1+max(max_depth(r->left),max_depth(r->right));
-        
+        return 1+max(depth(r->left),depth(r->right));
     }
     void dfs(TreeNode *r)
     {
@@ -43,15 +37,17 @@ public:
         {
             return;
         }
-        int left = max_depth(r->left);
-        int right = max_depth(r->right);
-        res = max(res,left+right);
+        int left = depth(r->left);
+        int right = depth(r->right);
+        if(abs(left-right)>1)
+        {
+            flag = false;
+            return;
+        }
         dfs(r->left);
         dfs(r->right);
-
-        
     }
-
 };
 
-//NOT UNDERSTANDING THE O(N) SOLN
+
+//NEED TO UNDERSTAND O(N)

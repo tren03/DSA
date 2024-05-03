@@ -1,0 +1,65 @@
+235. Lowest Common Ancestor of a Binary Search Tree
+Solved
+Medium
+Topics
+Companies
+Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two given nodes in the BST.
+
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+
+
+
+
+
+
+// brute force = recurisve funcion tip, write all the base cases and then go for recursion logic time = O(N)
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (!root)
+            return NULL;
+        
+        if (root->val == p->val || root->val == q->val) // ip p or q is our root, return that
+            return root;
+        
+        TreeNode* temp = lowestCommonAncestor(root->left, p, q);
+        TreeNode* temp2 = lowestCommonAncestor(root->right, p, q);
+
+        if (temp && temp2) // this means that p and q are children of root, so return that
+            return root;
+        else if (temp) // this means we found p == root, so return temp
+            return temp;
+        else if (temp2)
+            return temp2;
+        else
+            return NULL;
+    }
+};
+
+
+
+// optimized o(logn)
+
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        TreeNode* cur = root;
+        while(cur)
+        {
+            if(cur->val < p->val && cur->val < q->val)
+            {
+                cur = cur->right;
+            }
+            else if(cur->val > p->val && cur->val > q->val)
+            {
+                cur = cur->left;
+            }
+            else // if above both are not true , we have reached p or q value, or the split where p and q get split. we can do this since its a binary search tree
+            {
+                return cur;
+            }
+        }
+        return cur;
+        
+    }
+};

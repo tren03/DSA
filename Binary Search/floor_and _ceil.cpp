@@ -1,5 +1,7 @@
-smallest number >= x - ceil
-largest number <= x - floor
+// smallest number >= x - ceil
+// largest number <= x - floor
+
+#include<bits/stdc++.h>
 
 pair<int, int> getFloorAndCeil(vector<int> &arr, int n, int x) {
 	pair<int,int> ans;

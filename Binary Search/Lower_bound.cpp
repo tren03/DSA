@@ -1,3 +1,6 @@
+
+#include<bits/stdc++.h>
+#include <vector>
 int lowerBound(vector<int> arr, int n, int x) {
 	int l=0,r=n-1;
 	int ans = n;

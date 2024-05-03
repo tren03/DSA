@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+
 int upperBound(vector<int>&arr, int x, int n) {
 	int l=0,r=n-1;
 	int ans = n;

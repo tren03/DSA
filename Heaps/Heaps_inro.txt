@@ -8,4 +8,14 @@ Min heap - In a min heap, the value of a node must be smallest among the node va
 In the context of algorithm interviews, heaps and priority queues can be treated as the same data structure. A heap is a useful data structure when it is necessary to repeatedly remove the object with the highest (or lowest) priority, or when insertions need to be interspersed with removals of the root node.
 
 
+in min heap, the top is the smallest element, so if we want to find kth largest, then we need min heap of size k and pop out rest of elements above it
+
+in max heap, the top is the largest element, so if we want to find kth smallest, then we need max heap of size k and pop out rest of elements above it
+
+by default in c++, priority_queue is max heap 
+for min heap, priority_queue<int, vector<int>, greater<int> > q
+
+priority_queue<int, vector<int>, greater<int> > gquiz(
+arr, arr + 6);
+
 
